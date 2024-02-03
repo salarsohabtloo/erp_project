@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Admin Dashboard</h2>
+  {% for letter in all_letters %}
+      <hr/>
+    <div>
+      <h3>Title: {{ letter.title }}</h3>
+
+        <p>Author: {{ letter.user }}</p>
+
+        <p>Content: {{ letter.content }}</p>
+
+        <p>Recipient: {{ letter.recipient }}</p><hr/><br/>
+
+    </div>
+  {% endfor %}
+{% endblock %}

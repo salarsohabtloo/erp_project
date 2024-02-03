@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloaded Letter</title>
+</head>
+<body>
+    <h3>Letter Information</h3>
+    <p>Tracking Code: {{ letter.tracking_code }}</p>
+    <p>Title: {{ letter.title }}</p>
+    <p>Content: {{ letter.content }}</p>
+    <p>Condition: {% if letter.is_read %}Opened{% else %}Unopened{% endif %}</p>
+    <p>Messages for this letter: {{ letter.messages }}</p>
+    <p>Response: {{ letter.additional_text }}</p>
+</body>
+</html>

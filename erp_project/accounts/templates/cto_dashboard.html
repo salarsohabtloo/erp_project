@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>CTO Dashboard</h2>
+         {% for letter in cto_letters %}
+            <div>
+                <h2>{{ letter.title }}</h2>
+                <p>{{ letter.content }}</p>
+                <p>Recipient: {{ letter.recipient }}</p>
+                <p>Status: {{ letter.status }}</p>
+                <p>Created at: {{ letter.created_at }}</p>
+                <p>Tracking Code: {{ letter.tracking_code }}</p>
+                <h4>References and Additional Texts:</h4>
+                <ol>
+                    {% for detail in letter.letterdetails_set.all %}
+                        <li> {{ letter.reci_get}} - says : {{ detail.additional_text }} - referred to : {{ detail.referred_to_group }} </li>
+                    {% endfor %}
+                </ol>
+                <a href="{% url 'view_letter' tracking_code=letter.tracking_code %}">View Letter</a>
+
+            </div>
+        {% endfor %}
+{% endblock %}

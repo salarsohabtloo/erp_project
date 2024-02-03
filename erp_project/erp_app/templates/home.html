@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load group_tags %}
+
+
+
+{% block content %}
+    <h2>Welcome  {{ user.username }}</h2>
+    {% if user|has_group:'normaluser' %}
+    <h4>Your Letters:</h4>
+    <ol>
+        {% for letter in user_letters %}
+            <li><hr/>
+
+               <b> Title :{{ letter.title }}</b><br/>Letter for {{ letter.recipient }} <br/> Status: {{ letter.status }}
+                <br/> content: {{ letter.content }} <br/> read : {{ letter.is_read }}
+                <br/>Tracking Code : {{ letter.tracking_code }} <br/><br/>
+                 <a href="{% url 'edit_letter' tracking_code=letter.tracking_code %}" class="btn btn-primary">Edit Letter</a><hr/>
+            </li>
+        {% endfor %}
+    {% endif %}
+    </ol>
+{% endblock %}
